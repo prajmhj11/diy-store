@@ -22,9 +22,6 @@ mix.scripts(
         "resources/assets/vendors/global/vendors.bundle.js",
         "resources/assets/js/demo1/scripts.bundle.js",
         "resources/assets/js/demo1/pages/login/login-general.js",
-        // "resources/js/custom/register.js",
-        // "resources/js/custom/login.js",
-        // "resources/js/custom/reset.js"
     ],
     "public/js/all.js"
 );
@@ -34,11 +31,25 @@ mix.styles(
         "resources/assets/css/demo1/pages/general/login/login-3.css",
         "resources/assets/vendors/global/vendors.bundle.css",
         "resources/assets/css/demo1/style.bundle.css",
-        // "resources/assets/css/demo1/skins/header/base/light.css",
-        // "resources/assets/css/demo1/skins/header/menu/light.css",
-        // "resources/assets/css/demo1/skins/brand/dark.css",
-        // "resources/assets/css/demo1/skins/aside/dark.css",
-        // "resources/assets/custom/css/projects.css"
     ],
     "public/css/all.css"
 );
+
+// CANVAS HTML JS
+mix.scripts([
+    "resources/assets/js/jquery.js",
+    "resources/assets/js/plugins.min.js",
+    "resources/assets/js/functions.js",
+], 'public/js/canvas.js');
+
+// CANVAS HTML CSS
+mix.styles([
+    "resources/assets/css/bootstrap.css",
+    "resources/assets/css/style.css",
+    "resources/assets/css/swiper.css",
+    "resources/assets/css/dark.css",
+    "resources/assets/css/font-icons.css",
+    "resources/assets/css/animate.css",
+    "resources/assets/css/magnific-popup.css",
+    "resources/assets/css/custom.css",
+], 'public/css/canvas.css');
