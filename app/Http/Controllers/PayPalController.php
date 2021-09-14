@@ -32,12 +32,13 @@ class PayPalController extends Controller
             $response = $this->provider->setExpressCheckout($cart, $recurring);
 
             if($response['paypal_link']==null){
+                return 'Error';
                 return redirect('/checkout')->withErrors('There is an error. Try again.');
             }
             return redirect($response['paypal_link']);
         } catch (\Exception $e) {
-           
-            return redirect('/checkout')->withErrors('Error processing PayPal payment for Order!');
+            return $e;
+            // return redirect('/checkout')->withErrors('Error processing PayPal payment for Order!');
         }
     }
 
@@ -59,11 +60,11 @@ class PayPalController extends Controller
         $response = $this->provider->getExpressCheckoutDetails($token);
 
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-            
+
             // Perform transaction on PayPal
             $payment_status = $this->provider->doExpressCheckoutPayment($cart, $token, $PayerID);
             $status = $payment_status['PAYMENTINFO_0_PAYMENTSTATUS'];
-            
+
 
             $invoice = $this->createInvoice($cart, $status);
 
@@ -71,13 +72,13 @@ class PayPalController extends Controller
                 return redirect(route('thankyou'))->with('success','processed');
             } else {
                 session()->forget('payment_method');
-                return redirect('/checkout')->withErrors('Error payment processing');            
+                return redirect('/checkout')->withErrors('Error payment processing');
             }
-           
+
         }
-        
+
     }
-    
+
     /**
      * Set cart data for processing payment on PayPal.
      *
@@ -104,20 +105,20 @@ class PayPalController extends Controller
                 array(
                     'name'  => $row->name,
                     'price' => $row->getPriceWithConditions(),
-                    'qty'   => $row->quantity 
+                    'qty'   => $row->quantity
                 )
             );
         }
-        
+
         $data['return_url'] = url('/paypal/ec-checkout-success');
-        
+
 
         $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
         $data['cancel_url'] = route('checkout');
 
         if(count(\Cart::getConditionsByType('coupon'))!=0){
-            
+
             $discount=\Cart::getConditionsByType('coupon')->first()->getCalculatedValue($sum);
 
             $sub_after_discount=$sum-$discount;
@@ -127,7 +128,7 @@ class PayPalController extends Controller
                     array(
                         'name'  => 'Discount',
                         'price' => '-'.$sum,
-                        'qty'   => 1 
+                        'qty'   => 1
                     )
                 );
             }
@@ -136,16 +137,16 @@ class PayPalController extends Controller
                     array(
                         'name'  => 'Discount',
                         'price' => '-'.$discount,
-                        'qty'   => 1 
+                        'qty'   => 1
                     )
                 );
             }
- 
+
         }
-        
-        
+
+
         $data['subtotal'] = \Cart::getSubTotal();
-        
+
         if(count(\Cart::getConditions())>0){
             $total = 0;
             foreach (\Cart::getConditions() as $condition) {
@@ -157,7 +158,7 @@ class PayPalController extends Controller
             $data['shipping'] = $total;
 
         }
-        
+
         $data['total'] = \Cart::getTotal();
 
         return $data;
@@ -181,8 +182,8 @@ class PayPalController extends Controller
         } else {
             $invoice['paid'] = 0;
         }
-        
+
         return $invoice;
     }
-    
+
 }

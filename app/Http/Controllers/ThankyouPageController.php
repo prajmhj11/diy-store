@@ -83,20 +83,19 @@ class ThankyouPageController extends Controller
                 $invoice = '0001';
             } else {
                 $invoice = $latest_order->id + 1;
-
                 function uniqueInvoice($invoice)
                 {
                     $i = 1;
 
                     $invoice_with_zero = sprintf('%04d', $invoice);
 
-                    $check_invoice = \App\Order::where('invoice_id', $invoice_with_zero)->first();
+                    $check_invoice = Order::where('invoice_id', $invoice_with_zero)->first();
 
                     while ($check_invoice) {
                         $invoice_new = $invoice + $i;
                         $invoice_new_with_zero = sprintf('%04d', $invoice_new);
 
-                        $check_invoice = \App\Order::where('invoice_id', $invoice_new_with_zero)->first();
+                        $check_invoice = Order::where('invoice_id', $invoice_new_with_zero)->first();
 
                         if (!$check_invoice) {
                             return  $invoice_new_with_zero;
@@ -104,11 +103,12 @@ class ThankyouPageController extends Controller
 
                         $i++;
                     }
+
+                    return $invoice_with_zero;
                 }
 
                 $invoice = uniqueInvoice($invoice);
             }
-
             session()->put('invoice', $invoice);
 
             //get the user id

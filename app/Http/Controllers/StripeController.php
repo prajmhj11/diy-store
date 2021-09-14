@@ -28,8 +28,7 @@ class StripeController extends Controller
 
             return redirect(route('thankyou'))->with('success','Payment complete');
         }catch(\Exception $e){
-            return $e;
-            // return redirect('/checkout')->withErrors($e->getMessage());
+            return redirect('/checkout')->withErrors($e->getMessage());
         }
 
     }
