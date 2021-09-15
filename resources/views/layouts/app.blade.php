@@ -11,6 +11,8 @@
     <link rel="shortcut icon" type="image" href="{{is_null(setting('site.logo'))?'': Storage::url(setting('site.logo'))}}">
 
     @notifyCss
+    <link type="text/css" rel="stylesheet" href="{{asset('css/canvas.css')}}">
+
     <!-- Fontawesome -->
     <link type="text/css" href="/frontend/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 
@@ -190,6 +192,8 @@
     <script src="/frontend/assets/js/select2.min.js"></script>
     <!-- Custom JS -->
     <script src="/frontend/assets/js/custom.js"></script>
+
+    <script src="{{asset('js/canvas.js')}}"></script>
 
     @notifyJs
     @yield('javascript')
