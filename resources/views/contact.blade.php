@@ -4,7 +4,7 @@
 
 @section('content')
   <!-- Hero -->
-  <section class="section-header bg-primary text-white pb-9 pb-lg-13 mb-4 mb-lg-6">
+  {{-- <section class="section-header bg-primary text-white pb-9 pb-lg-13 mb-4 mb-lg-6">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center">
@@ -14,18 +14,30 @@
         </div>
     </div>
     <div class="pattern bottom"></div>
+</section> --}}
+<section id="page-title" class="page-title-parallax page-title-dark page-title-center skrollable skrollable-between" style="background-image: url(&quot;demos/store/images/contact/page-title.jpg&quot;); background-size: cover; padding: 170px 0px 100px; background-position: 50% -34.0234px;" data-bottom-top="background-position: 50% 200px;" data-top-bottom="background-position: 50% -200px;">
+
+    <div class="container clearfix">
+        <h1>Get in Touch</h1>
+        <span>Contact Us</span>
+        {{-- <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol> --}}
+    </div>
+
 </section>
 <div class="section section-lg pt-0">
-    <div class="container mt-n8 mt-lg-n13 z-2">
+    <div class="container section  pt-lg-1 ">
         <div class="row justify-content-center">
             <div class="col-12">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">x</button>	
+                    <button type="button" class="close" data-dismiss="alert">x</button>
                     <strong>{{ $message }}</strong>
                 </div>
                 @endif
-                
+
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -34,7 +46,7 @@
                         @endforeach
                     </ul>
                 </div><br />
-                @endif 
+                @endif
                <!-- Card -->
                <div class="card border-light shadow-soft p-2 p-md-4 p-lg-5">
                 <div class="card-body">
@@ -74,7 +86,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-12 mt-4">
                                 <div class="form-group">
                                     <label class="form-label text-dark" for="phonenumberLabel">How can we help you?<span class="text-danger">*</span></label>
@@ -92,7 +104,7 @@
         </div>
     </div>
 </div>
-<div class="section section-lg pt-0 line-bottom-light">
+<div class="section section-lg  line-bottom-light">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 text-center px-4 mb-5 mb-lg-0">
@@ -100,7 +112,7 @@
                     <i class="fas fa-envelope-open-text"></i>
                 </div>
                 <h5 class="mb-3">Email us</h5>
-                
+
             <a class="font-weight-bold text-primary">{{setting('contact.email')}}</a>
             </div>
             <div class="col-12 col-md-4 text-center px-4 mb-5 mb-lg-0">
@@ -108,7 +120,7 @@
                     <i class="fas fa-phone-volume"></i>
                 </div>
                 <h5 class="mb-3">Call us</h5>
-                
+
                 <a class="font-weight-bold text-primary">{{setting('contact.phone')}}</a>
             </div>
             <div class="col-12 col-md-4 text-center px-4">
@@ -122,7 +134,7 @@
         </div>
     </div>
 </div>
-@include('sections.brand')          
+{{-- @include('sections.brand') --}}
 @endsection
 
 

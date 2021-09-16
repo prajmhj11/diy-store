@@ -31,13 +31,22 @@
     <!-- datatable CSS -->
     <link type="text/css" href="/frontend/css/DataTables/css/jquery.dataTables.min.css" rel="stylesheet">
 
+    <style>
+        .nav-item .nav-link:hover{
+            color: rgb(100, 131, 197) !important;
+        }
+        .nav-item .nav-link .active{
+            color: rgb(82, 117, 190) !important;
+        }
+    </style>
+
     @yield('css')
 </head>
 
 <body>
     @include('notify::messages')
     <header class="header-global">
-        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-primary">
+        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-gray">
             <div class="container">
                 <a class="text-white" href="/">
                     <h2>{{setting('site.title')}}</h2>
@@ -118,8 +127,9 @@
 
         @yield('content')
 
-        <footer class="footer section pt-6 pt-md-8 pt-lg-10 pb-3 bg-primary text-white overflow-hidden">
-            <div class="pattern pattern-soft top"></div>
+        {{-- <footer id="footer"class="footer section pt-6 pt-md-8 pt-lg-10 pb-3 bg-primary text-white overflow-hidden"> --}}
+            <footer id="footer" class="footer pt-3 pt-md-4 pt-lg-5 bg-primary text-white overflow-hidden">
+            {{-- <div class="pattern pattern-soft top"></div> --}}
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mb-4 mb-lg-0">
@@ -131,10 +141,11 @@
                     <div class="col-6 col-sm-3 col-lg-2 mb-4 mb-lg-0">
                         <h4>Navigation</h4>
                         <ul class="links-vertical">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/projects">Projects</a></li>
-                            <li><a href="/services">Services</a></li>
-                            <li><a href="/about">About</a></li>
+                            {{menu('header_menu','partials.header-menu')}}
+                            {{-- <li><a href="/">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            <li><a href="/about">About</a></li> --}}
+
                         </ul>
                     </div>
                     <div class="col-6 col-sm-3 col-lg-2 mb-4 mb-lg-0">
