@@ -5,7 +5,7 @@
 @section('content')
 
   <!-- Hero -->
-  <section class="pt-7 pb-5 bg-primary text-white">
+  {{-- <section class="pt-7 pb-5 bg-primary text-white">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center">
@@ -14,14 +14,26 @@
             </div>
         </div>
     </div>
-  </section>
+  </section> --}}
+
+  <section id="page-title" class="page-title-parallax page-title-dark page-title-center skrollable skrollable-between" style="background-image: url(&quot;demos/store/images/contact/page-title.jpg&quot;); background-size: cover; padding: 170px 0px 100px; background-position: 50% -34.0234px;" data-bottom-top="background-position: 50% 200px;" data-top-bottom="background-position: 50% -200px;">
+    <div class="container clearfix">
+        <h1>Checkout</h1>
+        <span>Please checkout with the items</span>
+        {{-- <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol> --}}
+    </div>
+
+</section>
 
   <div class="container mt-3">
     <div class="row">
       <div class="col-lg-12 text-center">
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">x</button>	
+            <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>{{ $message }}</strong>
         </div>
         @endif
@@ -34,10 +46,10 @@
             @endforeach
           </ul>
         </div><br />
-        @endif 
+        @endif
       </div>
     </div>
-  </div>   
+  </div>
 
   <div class="container my-5">
     @if (!Auth::user())
@@ -60,7 +72,7 @@
                       <input type="email" class="form-control" name="email">
                     </div>
                   </div>
-                
+
                   <div class="col-md-6">
                     <div class="mb-3">
                       <label for="email">Password</label>
@@ -68,16 +80,16 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <button type="submit" class="btn btn-lg btn-primary">Login</button>
               </form>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     @endif
-    <div class="row">  
-      <?php 
+    <div class="row">
+      <?php
       $currency=get_current_currency()['symbol'];
       if(!$customer){
         $billing_country='';
@@ -112,7 +124,7 @@
         $name=old('name');
         $email=old('email');
       }
-                 
+
       ?>
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -136,8 +148,8 @@
             </li>
             <?php $sum=$sum+$row->getPriceSumWithConditions();?>
           @endforeach
-          
-          @if(count(Cart::getConditionsByType('coupon'))!=0)          
+
+          @if(count(Cart::getConditionsByType('coupon'))!=0)
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Promo code (<a href="/cart/discountremove">remove</a>)</h6>
@@ -161,7 +173,7 @@
               @endif
             @endforeach
           @endif
-          
+
           <li class="list-group-item d-flex justify-content-between">
             <span>Total</span>
             <strong>{{$currency}}{{Cart::getTotal()}}</strong>
@@ -230,7 +242,7 @@
               <input type="number" class="form-control" name="zip" id="zip" value="{{$billing_zip}}" placeholder="">
             </div>
           </div>
-          
+
           <hr class="mb-4">
 
           <div class="row mb-4">
@@ -239,20 +251,20 @@
               <label class="custom-control-label" for="same-address">Shipping address different?</label>
             </div>
           </div>
-          
+
           @include('sections.shipping')
           <hr class="mb-4">
           <div class="row"></div>
-          
+
           <button type="submit" class="btn btn-primary btn-lg btn-block">Proceed</button>
         </form>
-          
+
         </div>
       </div>
     </div>
   </div>
- 
-  
+
+
 @stop
 
 @section('javascript')

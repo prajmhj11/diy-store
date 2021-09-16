@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Hero -->
-    <section class="section-header bg-primary text-white">
+    {{-- <section class="section-header bg-primary text-white">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 text-center">
@@ -12,6 +12,18 @@
                 </div>
             </div>
         </div>
+    </section> --}}
+
+    <section id="page-title" class="page-title-parallax page-title-dark page-title-center skrollable skrollable-between" style="background-image: url(&quot;demos/store/images/contact/page-title.jpg&quot;); background-size: cover; padding: 170px 0px 100px; background-position: 50% -34.0234px;" data-bottom-top="background-position: 50% 200px;" data-top-bottom="background-position: 50% -200px;">
+        <div class="container clearfix">
+            <h1>Product Details</h1>
+            <span></span>
+            {{-- <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+            </ol> --}}
+        </div>
+
     </section>
 
     <section class="section py-5">
@@ -19,11 +31,11 @@
 
             @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">x</button>	
+                <button type="button" class="close" data-dismiss="alert">x</button>
                 <strong>{{ $message }}</strong>
             </div>
             @endif
-            
+
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -32,31 +44,31 @@
                     @endforeach
                 </ul>
             </div><br />
-            @endif 
+            @endif
             <?php $currency=get_current_currency()['symbol'];?>
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <?php
                         if(!is_null($product->other_image)){
                             $images=json_decode($product->other_image);
-                        } 
+                        }
                         else{
                             $images=collect([]);
                         }
-                        
+
                     ?>
                     @if (count($images)==0)
                         <img src="{{is_null($product->primary_image)?asset('frontend/img/default.png'):Voyager::image($product->primary_image)}}" class="img-fluid" alt="product">
                     @else
-                        
-                   
+
+
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
-                          
+
                           @for ($i = 0; $i < count($images)+1; $i++)
                             <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" class="{{$i==0?'active':''}}"></li>
-                          @endfor    
-                            
+                          @endfor
+
                         </ol>
                         <div class="carousel-inner">
                             @for ($i = 0; $i < count($images)+1; $i++)
@@ -66,8 +78,8 @@
                                     @else
                                         <img class="d-block w-100" src="{{is_null($images[$i-1])?'/frontend/assets/img/default.png':Voyager::image($images[$i-1])}}">
                                     @endif
-                                </div> 
-                            @endfor 
+                                </div>
+                            @endfor
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -88,7 +100,7 @@
                             @foreach ($reviews as $review)
                                 <?php $sum=$sum+$review->rating;?>
                             @endforeach
-                            <?php 
+                            <?php
                             if(count($reviews)==0){
                                 $average=0;
                             }
@@ -97,15 +109,15 @@
                             }
                             ?>
                             <div class="customer-review d-flex mb-2">
-                                
+
                                 <div class="d-flex">
                                     <?php $review_rate=$average; ?>
                                     <?php get_star_rating($review_rate);?>
-                                    <div class="review-rating">({{count($reviews)}} reviews)</div> 
+                                    <div class="review-rating">({{count($reviews)}} reviews)</div>
                                 </div>
-                                
+
                             </div>
-                            
+
                             <span class="badge badge-primary mr-1">{{is_null($product->category_id)?'Uncategorized':$product->category->name}}</span>
                             <p class="mt-3">SKU: {{$product->sku}}</p>
                         </div>
@@ -122,7 +134,7 @@
                         <p>{{$product->small_description}}</p>
 
                         <form class="d-flex justify-content-left" action="{{route('product.add')}}" method="get">
-                            <input type="number" value="1" name="quantity" class="form-control w-25">   
+                            <input type="number" value="1" name="quantity" class="form-control w-25">
                             <input type="hidden" value="{{$product->id}}" name="id">
                             <button class="btn btn-primary btn-md my-0 ml-2 p" type="submit">Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
@@ -162,7 +174,7 @@
                                                         <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
                                                             <div class="d-flex mb-4">
                                                                 <?php $review_rate=$review->rating; ?>
-                                                                <?php get_star_rating($review_rate);?>  
+                                                                <?php get_star_rating($review_rate);?>
                                                             </div>
                                                             <p class="mt-2">"{{$review->description}}"</p>
                                                             <p>by <strong>{{$review->user->name}}</strong><p>
@@ -212,7 +224,7 @@
                                                         <p>Please <a href="/login">login</a> to submit a review</p>
                                                     @endif
                                                 </div>
-                                            </div> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -230,7 +242,7 @@
                     <h2 class="text-center py-4">You might like</h2>
                     <div class="row">
                         @include('sections.product')
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
