@@ -39,6 +39,9 @@
             color: rgb(82, 117, 190) !important;
         }
 
+        .links-vertical li:hover{
+            color: rgb(82, 117, 190) !important;
+        }
     </style>
 
     @yield('css')
