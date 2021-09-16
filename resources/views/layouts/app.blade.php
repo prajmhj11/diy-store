@@ -35,9 +35,10 @@
         .nav-item .nav-link:hover{
             color: rgb(100, 131, 197) !important;
         }
-        .nav-item .nav-link .active{
-            color: rgb(82, 117, 190) !important;
+        .links-vertical li:hover{
+            color: rgb(179, 162, 162) !important;
         }
+
     </style>
 
     @yield('css')
@@ -128,9 +129,11 @@
         @yield('content')
 
         {{-- <footer id="footer"class="footer section pt-6 pt-md-8 pt-lg-10 pb-3 bg-primary text-white overflow-hidden"> --}}
-            <footer id="footer" class="footer pt-3 pt-md-4 pt-lg-5 bg-primary text-white overflow-hidden">
-            {{-- <div class="pattern pattern-soft top"></div> --}}
-            <div class="container">
+            <footer id="footer" class="navbar-dark navbar-theme-gray footer pt-3 pt-md-4 pt-lg-5 text-white overflow-hidden " style="background-color: black">
+            {{-- <footer id="footer" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-gray"> --}}
+
+                {{-- <div class="pattern pattern-soft top"></div> --}}
+            <div class="container ">
                 <div class="row">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <a class="footer-brand mr-lg-5 d-flex" href="/">
