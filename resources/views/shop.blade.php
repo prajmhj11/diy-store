@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- Hero -->
-    <section class="section-header bg-primary text-white">
+    {{-- <section class="section-header bg-primary text-white">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center">
@@ -18,10 +18,22 @@
                     <h2>Search results for: {{request()->input('query')}}</h2>
                 @else
                     <h1 class="display-2 mb-3">Shop</h1>
-                @endif    
+                @endif
             </div>
         </div>
     </div>
+    </section> --}}
+
+    <section id="page-title" class="page-title-parallax page-title-dark page-title-center skrollable skrollable-between" style="background-image: url(&quot;demos/store/images/contact/page-title.jpg&quot;); background-size: cover; padding: 170px 0px 100px; background-position: 50% -34.0234px;" data-bottom-top="background-position: 50% 200px;" data-top-bottom="background-position: 50% -200px;">
+        <div class="container clearfix">
+            <h1>Shop</h1>
+            <span></span>
+            {{-- <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+            </ol> --}}
+        </div>
+
     </section>
 
     <section class="bg-soft py-5">
@@ -29,11 +41,11 @@
 
             @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">x</button>	
+                <button type="button" class="close" data-dismiss="alert">x</button>
                 <strong>{{ $message }}</strong>
             </div>
             @endif
-            
+
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -42,7 +54,7 @@
                     @endforeach
                 </ul>
             </div><br />
-            @endif 
+            @endif
 
             <?php $currency=get_current_currency()['symbol'];?>
 
@@ -60,14 +72,14 @@
                                                 </a>
                                             </div>
                                             <div class="card-body p-0 m-0">
-                                                
+
                                                 <h4 class="mt-3"><a href="/product/{{$product->slug}}">{{$product->title}}</a></h4>
                                                 <p class="text-muted">{{is_null($product->category)?"Uncategorized":$product->category->name}}</p>
                                                 <p>
                                                     @if ($product->discounted_price>0)
-                                                        <del>{{$currency}}{{$product->regular_price}}</del> {{$currency}}{{$product->discounted_price}}   
+                                                        <del>{{$currency}}{{$product->regular_price}}</del> {{$currency}}{{$product->discounted_price}}
                                                     @else
-                                                        {{$currency}}{{$product->regular_price}} 
+                                                        {{$currency}}{{$product->regular_price}}
                                                     @endif
                                                 </p>
                                                 <div class="d-flex mb-4">
@@ -75,7 +87,7 @@
                                                     @foreach ($product->reviews as $review)
                                                         <?php $sum=$sum+$review->rating;?>
                                                     @endforeach
-                                                    <?php 
+                                                    <?php
                                                     if(count($product->reviews)>0){
                                                         $average=$sum/count($product->reviews);
                                                     }
@@ -84,7 +96,7 @@
                                                     }
                                                     ?>
                                                     <?php $review_rate=$average; ?>
-                                                    
+
                                                     {{--Start Rating--}}
                                                     @for ($i = 0; $i < 5; $i++)
                                                     @if (floor($review_rate) - $i >= 1)
@@ -98,18 +110,18 @@
                                                         <i class="far fa-star text-warning"> </i>
                                                     @endif
                                                     @endfor
-                                                    {{--End Rating--}}  
+                                                    {{--End Rating--}}
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- end card -->
                                     </div>
-                                @endforeach 
+                                @endforeach
                             </div>
                         </div>
-                        
+
                     </div>
-                          
+
                     <div class="mt-3 text-center">
                         {{$products->appends(request()->query())->links()}}
                     </div>
@@ -122,18 +134,18 @@
                     </form>
                     <div class="ml-1">
                         <h4 class="mt-3">Category</h4>
-                    
+
                         <ul class="list-unstyled">
                             @if($categories->count()>0)
-                                @foreach($categories as $category)  
-                                    <li><a href="{{route('shop.category',['category'=>$category->slug,'query'=>request()->input('query')])}}">{{$category->name}}</a></li>   
+                                @foreach($categories as $category)
+                                    <li><a href="{{route('shop.category',['category'=>$category->slug,'query'=>request()->input('query')])}}">{{$category->name}}</a></li>
                                 @endforeach
                             @else
                                 No Category
                             @endif
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
