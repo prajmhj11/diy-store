@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Register')
+
 @section('content')
 <!-- Hero -->
 <section class="section-header bg-primary text-white">

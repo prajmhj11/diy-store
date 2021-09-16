@@ -35,7 +35,7 @@
         .nav-item .nav-link:hover{
             color: rgb(100, 131, 197) !important;
         }
-        .nav-item .nav-link .active{
+        .nav-item .nav-link.active{
             color: rgb(82, 117, 190) !important;
         }
     </style>
@@ -60,11 +60,11 @@
                                 </a>
                             </div>
                             <div class="col-6 collapse-close">
-                                <a href="#navbar_global" role="button" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"></a>
+                                <a href="#navbar_global" role="button" class="fas fa-times navbar-close" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"></a>
                             </div>
                         </div>
                     </div>
-                    <ul class="navbar-nav navbar-nav-hover navbar-nav ml-lg-auto">
+                    <ul class="navbar-nav ml-lg-auto">
                         {{menu('header_menu','partials.header-menu')}}
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link" data-toggle="dropdown" aria-controls="pages_submenu" aria-expanded="false" aria-label="Toggle pages menu item">
@@ -206,6 +206,15 @@
 
     <script src="{{asset('js/canvas.js')}}"></script>
 
+    <script>
+        $(document).off('click', '.navbar-close').on('click', '.navbar-close', function(){
+            setTimeout(function(){
+                $('#navbar_global').removeClass('show');
+                $('html').removeAttr('style');
+                $('body').removeAttr('style');
+            }, 500);
+        })
+    </script>
     @notifyJs
     @yield('javascript')
 </body>
