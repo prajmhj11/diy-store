@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image" href="{{is_null(setting('site.logo'))?'': Storage::url(setting('site.logo'))}}">
 
     @notifyCss
-    <link type="text/css" href="{{asset('css/canvas.css')}}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{asset('css/canvas.css')}}">
 
     <!-- Fontawesome -->
     <link type="text/css" href="/frontend/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -31,7 +31,14 @@
     <!-- datatable CSS -->
     <link type="text/css" href="/frontend/css/DataTables/css/jquery.dataTables.min.css" rel="stylesheet">
 
-
+    <style>
+        .nav-item .nav-link:hover{
+            color: rgb(100, 131, 197) !important;
+        }
+        .nav-item .nav-link .active{
+            color: rgb(82, 117, 190) !important;
+        }
+    </style>
 
     @yield('css')
 </head>
@@ -121,7 +128,7 @@
         @yield('content')
 
         {{-- <footer id="footer"class="footer section pt-6 pt-md-8 pt-lg-10 pb-3 bg-primary text-white overflow-hidden"> --}}
-            <footer id="footer" class="footer section pt-3 pt-md-4 pt-lg-5 pb-3 bg-primary text-white overflow-hidden">
+            <footer id="footer" class="footer pt-3 pt-md-4 pt-lg-5 bg-primary text-white overflow-hidden">
             {{-- <div class="pattern pattern-soft top"></div> --}}
             <div class="container">
                 <div class="row">
@@ -134,9 +141,10 @@
                     <div class="col-6 col-sm-3 col-lg-2 mb-4 mb-lg-0">
                         <h4>Navigation</h4>
                         <ul class="links-vertical">
-                            <li><a href="/">Home</a></li>
+                            {{menu('header_menu','partials.header-menu')}}
+                            {{-- <li><a href="/">Home</a></li>
                             <li><a href="/shop">Shop</a></li>
-                            <li><a href="/about">About</a></li>
+                            <li><a href="/about">About</a></li> --}}
 
                         </ul>
                     </div>

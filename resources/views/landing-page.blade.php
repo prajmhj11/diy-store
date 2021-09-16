@@ -21,7 +21,7 @@
 
 </section> --}}
 
-<section id="slider" class="slider-element swiper_wrapper min-vh-100" data-loop="true" data-speed="1000" data-autoplay="5000">
+<section id="slider" class="slider-element swiper_wrapper vh-75" data-loop="true" data-speed="1000" data-autoplay="5000">
     <div class="slider-inner">
 
         <div class="swiper-container swiper-parent swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" style="cursor: grab;">
@@ -33,7 +33,7 @@
                               </p>
                         </div> --}}
                     </div>
-                    <div class="swiper-slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.3)), url('/frontend/img/slide1.png');"></div>
+                    <div class="swiper-slide-bg" style="background-size: cover; background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.3)), url('/frontend/img/slide1.png');"></div>
                 </div>
                 <div class="swiper-slide dark swiper-slide-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 3" style="width: 779px;">
                     <div class="container">
@@ -43,7 +43,7 @@
                             </p>
                         </div> --}}
                     </div>
-                    <div class="swiper-slide-bg" style="background-image: url('/frontend/img/slide3.png');"></div>
+                    <div class="swiper-slide-bg" style="background-size: cover; background-image: url('/frontend/img/slide3.png');"></div>
                 </div>
                 <div class="swiper-slide dark swiper-slide-active" data-swiper-slide-index="1" role="group" aria-label="2 / 3" style="width: 779px;">
                     <div class="container">
@@ -53,7 +53,7 @@
                             </p>
                         </div> --}}
                     </div>
-                    <div class="swiper-slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.6)), url('/frontend/img/slide4.png');"></div>
+                    <div class="swiper-slide-bg" style="background-size: cover; background-image: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.6)), url('/frontend/img/slide4.png');"></div>
                 </div>
                 <div class="swiper-slide dark swiper-slide-next" data-swiper-slide-index="2" role="group" aria-label="3 / 3" style="width: 779px;">
                     <div class="container">
@@ -63,7 +63,7 @@
                             </p>
                         </div> --}}
                     </div>
-                    <div class="swiper-slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.3)), url('/frontend/img/slide5.jpeg');"></div>
+                    <div class="swiper-slide-bg" style="background-size: cover; background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.3)), url('/frontend/img/slide5.jpeg');"></div>
                 </div>
             <div class="swiper-slide dark swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 3" style="width: 779px;">
                     <div class="container">
@@ -73,10 +73,10 @@
                             </p>
                         </div> --}}
                     </div>
-                    <div class="swiper-slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.3)), url('/frontend/img/slide4.png');"></div>
+                    <div class="swiper-slide-bg" style="background-size: cover; background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.3)), url('/frontend/img/slide4.png');"></div>
                 </div></div>
-            <div class="slider-arrow-left" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-822ffb7f4fcfac6d"><i class="icon-angle-left"></i></div>
-            <div class="slider-arrow-right" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-822ffb7f4fcfac6d"><i class="icon-angle-right"></i></div>
+            <div class="slider-arrow-left" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-822ffb7f4fcfac6d"><i class="fas fa-chevron-left"></i></div>
+            <div class="slider-arrow-right" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-822ffb7f4fcfac6d"><i class="fas fa-chevron-right"></i></div>
             <div class="slide-number"><div class="slide-number-current">2</div><span>/</span><div class="slide-number-total">3</div></div>
         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 

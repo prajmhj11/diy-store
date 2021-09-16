@@ -4,6 +4,24 @@
 
 @section('content')
 
+    <style>
+        .cards{
+            max-height: 100%;
+        }
+        .card{
+            height: 100%;
+        }
+        .card .card-image{
+            height: 70%;
+        }
+        .card .card-image img{
+            object-fit: cover;
+            height: 100%;
+        }
+        .card .card-body{
+            height: 30%;
+        }
+    </style>
     <!-- Hero -->
     {{-- <section class="section-header bg-primary text-white">
     <div class="container">
@@ -64,8 +82,8 @@
                         <div class="col-lg-12">
                             <div class="row">
                                 @foreach ($products as $product)
-                                    <div class="col-md-4">
-                                        <div class="card card-product card-plain">
+                                    <div class="cards col-md-4">
+                                        <div class="card card-product card-plain mb-5">
                                             <div class="card-image">
                                                 <a href="/product/{{$product->slug}}">
                                                     <img src="{{is_null($product->primary_image)?'/frontend/assets/img/default.png':Voyager::image($product->primary_image)}}" />
